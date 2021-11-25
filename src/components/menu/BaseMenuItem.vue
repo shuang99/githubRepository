@@ -6,8 +6,12 @@
 </template>
 
 <script lang='ts'>
-import { defineComponent, toRefs } from "vue";
+import { defineComponent } from "vue";
+import { Setting } from "@element-plus/icons";
 export default defineComponent({
+  components: {
+    Setting,
+  },
   props: {
     routerItem: {
       type: Object,
@@ -15,11 +19,9 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const state = {
-    };
+    const state = {};
 
-    return {
-    };
+    return {};
   },
 });
 </script>

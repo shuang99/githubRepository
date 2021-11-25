@@ -8,11 +8,11 @@
   },
   "dependencies": {
     "element-plus": "^1.2.0-beta.3",
+    "pinia": "^2.0.4",
     "vue": "^3.2.16",
     "vue-draggable-next": "^2.1.1",
     "vue-router": "4",
-    "vuedraggable": "^4.1.0",
-    "vuex": "^4.0.2"
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^16.11.9",

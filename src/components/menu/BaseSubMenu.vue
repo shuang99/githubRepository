@@ -9,7 +9,7 @@
         <el-icon><location /></el-icon>
         <span>{{ routerItem.meta.title }}</span>
       </template>
-      <base-sub-menu :routes="routerItem.children" v-if="routerItem.children"/>
+      <base-sub-menu :routes="routerItem.children" v-if="routerItem.children" />
       <el-menu-item-group v-else :title="routerItem.meta.title">
         <base-menu-item :routerItem="routerItem" />
       </el-menu-item-group>
@@ -19,11 +19,13 @@
 </template>
 
 <script lang='ts'>
-import { defineComponent, toRefs } from "vue";
+import { defineComponent } from "vue";
 import BaseMenuItem from "./BaseMenuItem.vue";
+import { Location } from "@element-plus/icons";
 export default defineComponent({
   components: {
     BaseMenuItem,
+    Location,
   },
   props: {
     routes: {
