@@ -1,11 +1,11 @@
-import * as VueRouter from "vue-router";
+import { createRouter, RouteRecordRaw, createWebHashHistory } from "vue-router";
 
-export const routes = [
+export const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     component: () => import("../components/Layout.vue"),
     meta: {
-      icon: "carbon:user-role",
+      icon: "edit",
       title: "第一級",
     },
     children: [
@@ -15,7 +15,7 @@ export const routes = [
         component: () => import("../components/MainContent.vue"),
         redirect: "/level/menu1/menu1-1",
         meta: {
-          icon: "carbon:user-role",
+          icon: "delete",
           title: "第一級－１",
         },
         children: [
@@ -55,13 +55,13 @@ export const routes = [
     name: "Level",
     component: () => import("../components/MainContent.vue"),
     meta: {
-      icon: "carbon:user-role",
+      icon: "add",
       title: "第二級",
     },
   },
 ];
 
-export default VueRouter.createRouter({
-  history: VueRouter.createWebHashHistory(),
+export default createRouter({
+  history: createWebHashHistory(),
   routes,
 });

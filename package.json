@@ -7,7 +7,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "element-plus": "^1.2.0-beta.3",
+    "mockjs": "^1.1.0",
     "pinia": "^2.0.4",
     "vue": "^3.2.16",
     "vue-draggable-next": "^2.1.1",
@@ -15,6 +17,7 @@
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
+    "@types/mockjs": "^1.0.4",
     "@types/node": "^16.11.9",
     "@vitejs/plugin-vue": "^1.9.3",
     "eslint": "^8.3.0",

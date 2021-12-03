@@ -8,6 +8,7 @@
 <script lang='ts'>
 import { defineComponent } from "vue";
 import { Setting } from "@element-plus/icons";
+
 export default defineComponent({
   components: {
     Setting,
@@ -17,11 +18,6 @@ export default defineComponent({
       type: Object,
       require: true,
     },
-  },
-  setup(props) {
-    const state = {};
-
-    return {};
   },
 });
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div style="width: 200px">vue3.0项目</div>
-  <div @click="toggleCollapse">切换</div>
+  <div @click="toggleCollapse" >切换</div>
 </template>
 
 <script lang='ts'>

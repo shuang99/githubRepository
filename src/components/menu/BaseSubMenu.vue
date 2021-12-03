@@ -33,10 +33,6 @@ export default defineComponent({
       require: true,
     },
   },
-  setup(props) {
-    const state = {};
-    return {};
-  },
 });
 </script>
 <style lang='scss' scoped>
