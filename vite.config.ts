@@ -18,4 +18,16 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://120.221.161.220:9001",
+        changeOrigin: true,
+      },
+      "/auth": {
+        target: "http://120.221.161.192:9005/",
+        changeOrigin: true,
+      },
+    },
+  },
 });

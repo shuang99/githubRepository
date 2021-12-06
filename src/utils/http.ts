@@ -6,9 +6,10 @@ import axios, {
 import { ElMessage, ElLoading, ILoadingInstance } from "element-plus";
 
 const state = {
-  ok: "200",
+  ok: "200",//请求成功状态码
 };
 
+//返回数据规则
 interface IResponseData<T> {
   status: number;
   message?: string;
@@ -16,16 +17,21 @@ interface IResponseData<T> {
   code: string;
 }
 
+//请求默认配置规则
 type TOption = {
   baseURL: string;
   timeout: number;
 };
 
+//默认配置
 const config = {
-  baseURL: "/",
+  baseURL: "/api",
   timeout: 30 * 1000,
+  withCredentials: true,
 };
 
+// const whiteUrl = ["/user/login", "/captcha"];
+//默认加载样式
 let loading: ILoadingInstance = ElLoading.service({
   lock: true,
   text: "Loading",
@@ -62,8 +68,11 @@ class Http {
         const data = response.data;
         const { code } = data;
 
-        if (code !== state["ok"]) {
-          ElMessage.error(data.msg);
+        if (!code) {
+          //如果没有返回状态码，直接返回数据，针对于返回数据为blob类型
+          return response;
+        } else if (code !== state["ok"]) {
+          ElMessage.error(data.message && "请求异常");
           return Promise.reject(data);
         }
         return response.data;
