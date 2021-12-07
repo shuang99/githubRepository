@@ -53,13 +53,12 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref, toRefs } from "vue";
-import { getCaptchaImage, gotoLogin } from "@/api/login";
+import { getCaptchaImage, getInfo, gotoLogin } from "@/api/login";
 import { CodeData } from "@/type/login";
 import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
 import setting from "@/setting.config";
-console.log("setting");
-console.log(setting);
+
 interface State {
   ruleForm: {
     username: string;
@@ -113,13 +112,20 @@ export default defineComponent({
     const submitForm = () => {
       state.ruleFormRef.validate(async (valid: boolean) => {
         if (valid) {
-          await gotoLogin({ ...state.ruleForm, uuid: state.uuid });
-          ElMessage.success("登陆成功!");
-          router.push("/");
+          const { token } = await gotoLogin({
+            ...state.ruleForm,
+            uuid: state.uuid,
+          });
+          if (token) {
+            localStorage.setItem("token", token);
+            ElMessage.success("登陆成功!");
+            await getInfo();
+            router.replace("/");
+          }
         }
         setTimeout(() => {
           getCaptchaImageFun();
-        }, 500);
+        }, 10);
       });
     };
 

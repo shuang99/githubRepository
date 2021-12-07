@@ -23,7 +23,7 @@ const config = {
   withCredentials: true,
 };
 
-// const whiteUrl = ["/user/login", "/captcha"];
+const whiteUrl = ["/captchaImage", "/login"];
 //默认加载样式
 let loading: ILoadingInstance = ElLoading.service({
   lock: true,
@@ -41,7 +41,7 @@ class Http {
     this.service.interceptors.request.use(
       (config: AxiosRequestConfig) => {
         let stateToken = localStorage.getItem("token") as string;
-        if (stateToken) {
+        if (config.url && !whiteUrl.includes(config.url) && stateToken) {
           (config.headers as AxiosRequestHeaders).authorization = stateToken;
         }
 

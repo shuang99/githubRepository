@@ -7,4 +7,5 @@ export interface IResponseData<T> {
   code: number;
   captchaOnOff?: boolean;
   uuid?: string;
+  token?: string;
 }
