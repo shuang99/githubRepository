@@ -61,7 +61,18 @@ export const routes: Array<RouteRecordRaw> = [
   },
 ];
 
+const otherRouter = [
+  {
+    path: "/login",
+    name: "Login",
+    component: () => import("@/views/login/index.vue"),
+    meta: {
+      title: "登录",
+    },
+  },
+];
+
 export default createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes: [...routes, ...otherRouter],
 });

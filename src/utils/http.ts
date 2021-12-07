@@ -4,18 +4,11 @@ import axios, {
   AxiosResponse,
 } from "axios";
 import { ElMessage, ElLoading, ILoadingInstance } from "element-plus";
+import { IResponseData } from "@/type/type";
 
 const state = {
-  ok: "200",//请求成功状态码
+  ok: 200, //请求成功状态码
 };
-
-//返回数据规则
-interface IResponseData<T> {
-  status: number;
-  message?: string;
-  data: T;
-  code: string;
-}
 
 //请求默认配置规则
 type TOption = {
@@ -72,7 +65,7 @@ class Http {
           //如果没有返回状态码，直接返回数据，针对于返回数据为blob类型
           return response;
         } else if (code !== state["ok"]) {
-          ElMessage.error(data.message && "请求异常");
+          ElMessage.error(data.msg || "请求异常");
           return Promise.reject(data);
         }
         return response.data;

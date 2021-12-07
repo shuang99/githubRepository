@@ -28,6 +28,10 @@ export default defineConfig({
         target: "http://120.221.161.192:9005/",
         changeOrigin: true,
       },
+      "/prod-api": {
+        target: "http://vue.ruoyi.vip/",
+        changeOrigin: true,
+      },
     },
   },
 });
